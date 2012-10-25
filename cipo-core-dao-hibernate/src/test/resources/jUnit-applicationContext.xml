@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:ctx="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						   http://www.springframework.org/schema/context
+						   http://www.springframework.org/schema/context/spring-context-3.1.xsd						   
+						   http://www.springframework.org/schema/aop
+						   http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+						   http://www.springframework.org/schema/tx
+						   http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	<!-- 
+		| This is configuration for test-specific beans, such as mock objects, etc. Uki. 
+	-->
+	
+	<ctx:annotation-config/>  
+	<tx:annotation-driven/> 
+	
+	<import resource="classpath:applicationContext-datasource.xml" />
+	<import resource="classpath:applicationContext-hibernate.xml" />
+	<import resource="classpath:applicationContext-dao.xml" />
+	
+	<bean id="joceA" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="1"/>
+		<property name="firstName" value="Joce" />
+		<property name="lastName" value="Desnis" />
+		<property name="boss" ref="bossA" />
+		<property name="isMale" value="true" />
+		<property name="age" value="40" />
+		<property name="home" ref="homeA" />
+	</bean>
+	
+	<bean id="fredA" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="2"/>
+		<property name="firstName" value="Fred" />
+		<property name="lastName" value="Pierre" />
+		<property name="boss" ref="bossA" />
+		<property name="isMale" value="true" />
+		<property name="age" value="35" />
+		<property name="home" ref="homeA" />
+	</bean>
+	
+	<bean id="pierreA" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="3"/>
+		<property name="firstName" value="Pierre" />
+		<property name="lastName" value="Landriau" />
+		<property name="boss" ref="bossA" />
+		<property name="isMale" value="true" />
+		<property name="age" value="45" />
+		<property name="home" ref="homeA" />
+	</bean>
+	
+	<bean id="bossA" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="4"/>
+		<property name="firstName" value="Carol" />
+		<property name="lastName" value="Desbiens" />
+		<property name="boss" ref="bigBossA" />
+		<property name="isMale" value="true" />
+		<property name="age" value="55" />
+		<property name="home" ref="homeA" />
+	</bean>
+	
+	<bean id="bigBossA" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="5"/>
+		<property name="firstName" value="Johanne" />
+		<property name="lastName" value="Lauzon" />
+		<property name="isMale" value="false" />
+		<property name="age" value="50" />
+		<property name="home" ref="homeA" />
+	</bean>
+
+	<bean id="declanB" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="6"/>
+		<property name="firstName" value="Declan" />
+		<property name="lastName" value="Rodrigues" />
+		<property name="boss" ref="bossB" />
+		<property name="isMale" value="true" />
+		<property name="age" value="44" />
+		<property name="home" ref="homeB" />
+	</bean>
+
+	<bean id="bossB" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="7"/>
+		<property name="firstName" value="Johanne" />
+		<property name="lastName" value="Goulet" />
+		<property name="isMale" value="true" />
+		<property name="age" value="53" />
+		<property name="home" ref="homeB" />
+	</bean>
+	
+	<bean id="bigBossB" class="ca.gc.ic.cipo.core.dao.model.test.Person">
+		<property name="id" value="8"/>
+		<property name="firstName" value="Liette" />
+		<property name="lastName" value="Mineault" />
+		<property name="isMale" value="false" />
+		<property name="age" value="56" />
+		<property name="home" ref="homeB" />
+	</bean>
+	
+	<bean id="homeA" class="ca.gc.ic.cipo.core.dao.model.test.Home">
+		<property name="id" value="1"/>
+		<property name="type" value="office"/>
+		<property name="address">
+			<bean id="addressA" class="ca.gc.ic.cipo.core.dao.model.test.Address">
+				<property name="id" value="1"/>
+				<property name="street" value="165 Hotêl de ville"/>
+				<property name="city" value="Gatineau"/>
+				<property name="state" value="QC"/>
+				<property name="zip" value="K1A 0C9"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="homeB" class="ca.gc.ic.cipo.core.dao.model.test.Home">
+		<property name="id" value="2"/>
+		<property name="type" value="office"/>
+		<property name="address">
+			<bean id="addressB" class="ca.gc.ic.cipo.core.dao.model.test.Address">
+				<property name="id" value="2"/>
+				<property name="street" value="50 rue Victoria"/>
+				<property name="city" value="Gatineau"/>
+				<property name="state" value="QC"/>
+				<property name="zip" value="K1A 0C9"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="homeC" class="ca.gc.ic.cipo.core.dao.model.test.Home">
+		<property name="id" value="3"/>
+		<property name="type" value="house"/>
+		<property name="address">
+			<bean id="addressC" class="ca.gc.ic.cipo.core.dao.model.test.Address">
+				<property name="id" value="3"/>
+				<property name="street" value="235, rue Queen"/>
+				<property name="city" value="Ottawa"/>
+				<property name="state" value="ON"/>
+				<property name="zip" value="K1A 0H5"/>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<import class="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+	<class name="ca.gc.ic.cipo.core.dao.model.test.Address" table="address">
+		<id column="id" name="id" type="long">
+			<generator class="native">
+				<param name="sequence">id_sequence</param>
+			</generator>
+		</id>
+
+		<property column="street" generated="never" name="street"
+			type="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+		<property column="city" generated="never" name="city"
+			type="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+		<property column="state" generated="never" name="state"
+			type="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+		<property column="zip" generated="never" name="zip"
+			type="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+	</class>
+
+
+</hibernate-mapping>

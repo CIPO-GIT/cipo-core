@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<import class="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+	<class name="ca.gc.ic.cipo.core.dao.model.test.Person" table="person">
+		<id column="id" name="id" type="long">
+			<generator class="native">
+				<param name="sequence">id_column_sequence</param>
+			</generator>
+		</id>
+
+		<property column="first_name" generated="never" name="firstName"
+			not-null="true" type="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+		<property column="last_name" generated="never" name="lastName"
+			not-null="true" type="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+		<property column="age" generated="never" name="age" not-null="true"
+			type="int" />
+		<property column="dob" generated="never" name="dob" type="date" />
+		<property column="isMale" generated="never" name="isMale"
+			type="boolean" />
+		<many-to-one name="boss"
+			class="ca.gc.ic.cipo.core.dao.model.test.Person" fetch="select">
+			<column name="boss_id" precision="11" scale="0" />
+		</many-to-one>
+		<many-to-one name="home" class="ca.gc.ic.cipo.core.dao.model.test.Home"
+			fetch="select">
+			<column name="home_id" precision="11" scale="0" />
+		</many-to-one>
+	</class>
+
+
+</hibernate-mapping>

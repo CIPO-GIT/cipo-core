@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd"> 
+
+	<!-- Standard DAOs -->
+	<bean id="personDAO" class="ca.gc.ic.cipo.core.dao.hibernate.PersonDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="homeDAO" class="ca.gc.ic.cipo.core.dao.hibernate.HomeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="addressDAO" class="ca.gc.ic.cipo.core.dao.hibernate.AddressDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- Misc -->
+	<bean id="dao" class="ca.gc.ic.cipo.core.dao.hibernate.HibernateDAO">
+			<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>

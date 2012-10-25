@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<import class="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+	<class name="ca.gc.ic.cipo.core.dao.model.test.Home" table="home">
+		<id column="id" name="id" type="long">
+			<generator class="native">
+				<param name="sequence">id_column_sequence</param>
+			</generator>
+		</id>
+
+		<property column="type" generated="never" name="type"
+			not-null="true" type="ca.gc.ic.cipo.core.dao.hibernate.TrimmedString" />
+		<many-to-one name="address"
+			class="ca.gc.ic.cipo.core.dao.model.test.Address" cascade="save-update">
+			<column name="address_id" />
+		</many-to-one>
+		<set name="residents" table="person" cascade="all" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="home"/>
+			</key>
+			<one-to-many class="ca.gc.ic.cipo.core.dao.model.test.Person" />
+		</set>
+	</class>
+
+
+</hibernate-mapping>

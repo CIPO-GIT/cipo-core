@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<configuration>
+		<stop-on-errors>true</stop-on-errors>
+		<date-format>MM/dd/yyyy HH:mm</date-format>
+		<wildcard>true</wildcard>
+	</configuration>
+
+	<!-- Person mapping -->
+	<mapping>
+		<class-a>ca.gc.ic.cipo.core.dao.dto.test.PersonDTO</class-a>
+		<class-b>ca.gc.ic.cipo.core.dao.model.test.Person</class-b>
+		<field>
+			<a>personId</a>
+			<b>id</b>
+		</field>
+	</mapping>
+
+	<!-- Home mapping -->
+	<mapping>
+		<class-a>ca.gc.ic.cipo.core.dao.dto.test.HomeDTO</class-a>
+		<class-b>ca.gc.ic.cipo.core.dao.model.test.Home</class-b>
+		<field>
+			<a>homeId</a>
+			<b>id</b>
+		</field>	
+	</mapping>
+	
+	<!-- Person Address -->
+	<mapping>
+		<class-a>ca.gc.ic.cipo.core.dao.dto.test.AddressDTO</class-a>
+		<class-b>ca.gc.ic.cipo.core.dao.model.test.Address</class-b>
+		<field>
+			<a>addressId</a>
+			<b>id</b>
+		</field>
+	</mapping>
+</mappings>
